@@ -35,7 +35,7 @@ extract_bufferData <- function (buff) {
   
   # load points
   points <- readOGR(dsn=path.expand("~/Documents/GIS/Bat Project/Grid Points"),layer="Grid_100m_reduced")
-  points$id <- as.character(points$id)
+  points$id <- as.character(points$site) #change "site" to whatever your sites are named in the SpatialPointsDataFrame
   
   #setup parallel backend to use many processors
   cl <- makeCluster(7) #set number of cores
@@ -68,7 +68,9 @@ extract_bufferData <- function (buff) {
   
   # NA's to 0 
   mydf_reshape[is.na(mydf_reshape)] <- 0
-  mydf_reshape <- mydf_reshape[,-grep("BLANK",colnames(mydf_reshape))]
+  if(sum(grep("BLANK",colnames(mydf_reshape))) > 0){
+    mydf_reshape <- mydf_reshape[,-grep("BLANK",colnames(mydf_reshape))]
+  }
   
   # create cover name column
   # order by site and order columns 1-7
