@@ -21,10 +21,10 @@ urbanization_score <- function (scale){
   radius <- scale/2 # radius in meters
   
   # define the buffer edges based upon the buffer radius. 
-  yPlus <- sites$UTM_N+radius
-  xPlus <- sites$UTM_E+radius
-  yMinus <- sites$UTM_N-radius
-  xMinus <- sites$UTM_E-radius
+  yPlus <- sites[,3]+radius
+  xPlus <- sites[,2]+radius
+  yMinus <- sites[,3]-radius
+  xMinus <- sites[,2]-radius
   
   # calculate polygon coordinates for each buffer centroid. 
   square=cbind(xMinus,yPlus,  # NW corner
