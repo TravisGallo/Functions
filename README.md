@@ -7,3 +7,5 @@ Creating square polygons was modified from "Create A Square Buffer Around a Plot
 
 2. 2017-08-24_extract_landcover_parallel.R: An R script created by Travis Gallo with help from Mason Fidino that extracts the proportion of landcover types within a given buffer size. Here we used a high resolution (1-m) landcover raster for the Chicago area. It also works with the NLCD landcover data with a few tweaks. This script is modified from Maxwell Joseph's "Spatial data extraction around buffered points in R". I simply made it work in parallel and made some tweaks to manage memory issues that we were facing since this project involved a large raster layer and many points. Obviously, there are a few project specific tweaks within the function.
 
+3. 2018-05-07_costDistance_mod: An R script created by Travis Gallo that modifies the costDistance function in the gdistance packaged so that one can calculate pairwise distances in parrallel. Thinking about dispersal distances, you can also set a cutoff distance to only calculate distances between neighborhing patches within a given distance.
+
