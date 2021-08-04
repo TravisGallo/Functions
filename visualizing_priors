@@ -1,0 +1,12 @@
+prior_test <- nimbleCode({
+  my_prior ~ T(dt(0, pow(2.5,-2), 1),0,)
+})
+
+initial.values <- list(my_prior = runif(1,0.001,100))
+
+mcmc.out <- nimbleMCMC(code = prior_test,
+                       inits = initial.values,
+                       nchains = 1, 
+                       niter = 10000,
+                       monitors = c('my_prior'))
+plot(density(mcmc.out))
